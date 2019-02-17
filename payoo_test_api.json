@@ -1,3 +1,4 @@
 {
-    "otp": "866232"
+    "status": 200,
+    "message": "Payment created successfully"
 }

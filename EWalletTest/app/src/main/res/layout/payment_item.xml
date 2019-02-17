@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="method"
+                  type="com.winsonmac.ewallettest.models.PaymentMethodModel"/>
+        <import type="com.winsonmac.core.util.FontUtil"/>
+    </data>
+
+    <RelativeLayout
+            android:alpha="@{method.isDisabled ? .5f : 1f }"
+            android:background="@{method.isSelected ? @drawable/card_item_selected_background : @drawable/card_item_background}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_20sdp"
+                android:alpha="@{method.isDisabled ? .5f : 1f }"
+                app:font="@{method.isSelected ? FontUtil.FONT_ROBOTO_MEDIUM : FontUtil.FONT_ROBOTO_REGULAR }"
+                android:textColor="@{method.isSelected ? @color/color_medium_blue : @color/color_dark_gray}"
+                android:textSize="@dimen/text_size_16"
+                android:text="@{method.mTitle}"
+                tools:text="e-Wallet"/>
+
+    </RelativeLayout>
+</layout>

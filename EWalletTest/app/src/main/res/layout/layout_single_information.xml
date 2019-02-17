@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="label" type="String"/>
+        <variable name="description" type="String"/>
+        <variable name="horizontal" type="Boolean"/>
+
+        <import type="android.widget.LinearLayout"/>
+        <import type="android.view.View"/>
+        <import type="android.view.Gravity"/>
+        <import type="com.winsonmac.core.util.FontUtil"/>
+    </data>
+
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:orientation="@{horizontal ? LinearLayout.HORIZONTAL : LinearLayout.VERTICAL, default=vertical}">
+
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tvLabel"
+                  android:layout_height="wrap_content"
+                  android:text="@{label}"
+                  android:textSize="@dimen/text_size_14"
+                  tools:text="Phone Number:"/>
+
+        <View android:layout_width="match_parent"
+              android:layout_height="@dimen/_5sdp"
+              android:visibility="@{horizontal ? View.GONE: View.VISIBLE, default=visible}"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:id="@+id/tvDescription"
+                  android:layout_height="wrap_content"
+                  android:text="@{description}"
+                  android:textSize="@dimen/text_size_16"
+                  android:textColor="@{horizontal ? @color/color_medium_blue : @color/color_black}"
+                  android:gravity="@{horizontal ? Gravity.END : Gravity.START, default=start}"
+                  app:font="@{horizontal ? FontUtil.FONT_ROBOTO_MEDIUM : FontUtil.FONT_ROBOTO_REGULAR}"
+                  tools:text="0905209926"/>
+    </LinearLayout>
+</layout>

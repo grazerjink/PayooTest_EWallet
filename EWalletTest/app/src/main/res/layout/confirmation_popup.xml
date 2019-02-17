@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel"
+                  type="com.winsonmac.ewallettest.controllers.confirmation.ConfirmationViewModel"/>
+
+        <variable name="handler"
+                  type="com.winsonmac.ewallettest.controllers.confirmation.ConfirmationPopupEventHandler"/>
+
+        <import type="com.winsonmac.core.util.FontUtil"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:focusable="false"
+            android:background="@color/color_white"
+            android:focusableInTouchMode="true"
+            android:gravity="center">
+
+        <ImageView
+                android:id="@+id/btnDismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{(v) -> handler.onDismissClick()}"
+                android:src="@drawable/ic_close"/>
+
+        <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnDismiss"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/text_size_18"
+                android:text="@string/confirmation_screen_otp_title"
+                app:font="@{FontUtil.FONT_ROBOTO_BOLD}"
+                tools:text="@string/confirmation_screen_otp_title"/>
+
+        <EditText
+                android:id="@+id/edtOtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textAlignment="center"
+                android:hint="@string/confirmation_screen_otp_hint_title"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/text_size_16"
+                android:maxLength="6"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:text="@={viewModel.mCode}"
+                app:font="@{FontUtil.FONT_ROBOTO_REGULAR}"/>
+
+        <TextView
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/edtOtp"
+                android:layout_alignEnd="@id/edtOtp"
+                android:layout_below="@id/edtOtp"
+                android:textColor="@color/color_red"
+                android:visibility="@{viewModel.mError==null || viewModel.mError.isEmpty() ? View.GONE : View.VISIBLE, default=gone}"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_14"
+                android:text="@{viewModel.mError}"
+                app:font="@{FontUtil.FONT_ROBOTO_REGULAR}"
+                tools:text="otp invalid"/>
+
+        <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edtOtp"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@drawable/button_confirm_popup_click_state"
+                android:textColor="@color/color_white"
+                android:textAllCaps="true"
+                android:stateListAnimator="@null"
+                android:text="@string/confirmation_screen_confirm_title"
+                android:onClick="@{(v)->handler.onConfirmClick()}"
+                app:font="@{FontUtil.FONT_ROBOTO_REGULAR}"
+                tools:text="Confirm"/>
+    </RelativeLayout>
+</layout>

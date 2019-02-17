@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="control_highlight_color">#fff</color>
+    <color name="control_normal_color">#fff</color>
+
+    <color name="toolbar_background_color">#288AFA</color>
+    <color name="toolbar_title_color">#fff</color>
+
+    <color name="loading_color">#288AFA</color>
+
+    <color name="message_alert_background_color">#fff</color>
+    <color name="message_alert_button_ok_title_color">#288AFA</color>
+    <color name="message_alert_button_negative_title_color">#288AFA</color>
+    <color name="message_alert_button_positive_title_color">#288AFA</color>
+    <color name="message_alert_divider_color">#afafaf</color>
+</resources>

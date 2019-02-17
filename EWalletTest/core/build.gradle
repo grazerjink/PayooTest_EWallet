@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.code
+        versionName versions.name
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // kotlin developing
+    implementation libraries.kotlin
+    // ui components
+    implementation libraries.appCompat
+    implementation libraries.design
+    // support multi-screen dimensions
+    implementation libraries.sdp
+    // extends date object lib
+    implementation libraries.threetenAbp
+    // support high-order functions
+    implementation libraries.stream
+    // Apply retrofit 2
+    implementation libraries.retrofit
+    implementation libraries.gson
+    implementation libraries.logInterceptor
+    implementation libraries.converterGson
+    // unit test libs
+    testImplementation libraries.junit
+    androidTestImplementation libraries.runner
+    androidTestImplementation libraries.espressoCore
+    // module
+}
+repositories {
+    mavenCentral()
+}

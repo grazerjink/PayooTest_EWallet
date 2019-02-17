@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/message_popup_background"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:gravity="center">
+
+    <TextView
+            android:id="@+id/tv_popup_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"
+            tools:text="Title"/>
+
+    <TextView
+            android:id="@+id/tv_popup_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_popup_title"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/_5sdp"
+            android:minHeight="@dimen/_50sdp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:textSize="@dimen/text_size_14"
+            tools:text="Bạn có muốn hủy đơn hàng không?"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_popup_message"
+            android:background="@drawable/message_popup_gray_bottom_radius"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:paddingTop="0.8dp">
+
+        <TextView
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/message_popup_background_state"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/message_alert_button_ok_title_color"
+                android:textSize="@dimen/text_size_14"
+                android:visibility="visible"
+                tools:text="Xác nhận"/>
+
+        <LinearLayout
+                android:id="@+id/ll_two_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:clipChildren="true"
+                android:clipToPadding="true"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="2">
+
+            <TextView
+                    android:id="@+id/btn_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/message_popup_background_left_state"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/message_alert_button_negative_title_color"
+                    android:textSize="@dimen/text_size_14"
+                    tools:text="Không"/>
+
+            <View
+                    android:layout_width="0.8dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/message_alert_divider_color"/>
+
+            <TextView
+                    android:id="@+id/btn_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/message_popup_background_right_state"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/message_alert_button_positive_title_color"
+                    android:textSize="@dimen/text_size_14"
+                    tools:text="Xác nhận"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

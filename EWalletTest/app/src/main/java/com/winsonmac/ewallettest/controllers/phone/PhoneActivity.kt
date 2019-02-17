@@ -135,7 +135,7 @@ class PhoneActivity : BaseActivity(), PhoneEventHandler {
                 // Close cursor at root
                 close()
 
-                mPhoneViewModel.mPhone.set(phoneNumber)
+                mPhoneViewModel.mPhone.set(phoneNumber?.trim())
             }
         } catch (e: Exception) {
             e.printStackTrace()

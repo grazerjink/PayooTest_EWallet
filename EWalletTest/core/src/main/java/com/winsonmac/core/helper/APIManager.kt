@@ -67,21 +67,22 @@ class APIManager private constructor(
             interceptor.level = HttpLoggingInterceptor.Level.BODY
 
             // Create request client
-            val httpBuilder = OkHttpClient.Builder()
-            httpBuilder.connectTimeout(60, TimeUnit.SECONDS)
-            httpBuilder.readTimeout(60, TimeUnit.SECONDS)
-            httpBuilder.writeTimeout(60, TimeUnit.SECONDS)
-            httpBuilder.addInterceptor(interceptor)
-            httpBuilder.addInterceptor { chain ->
-                val original = chain.request()
-                val requestBuilder = original.newBuilder()
-                    .method(original.method(), original.body())
+            val httpBuilder = OkHttpClient.Builder().apply {
+                connectTimeout(60, TimeUnit.SECONDS)
+                readTimeout(60, TimeUnit.SECONDS)
+                writeTimeout(60, TimeUnit.SECONDS)
+                addInterceptor(interceptor)
+                addInterceptor { chain ->
+                    val original = chain.request()
+                    val requestBuilder = original.newBuilder()
+                        .method(original.method(), original.body())
 
-                headers?.forEach { it ->
-                    requestBuilder.addHeader(it.key, it.value)
+                    headers?.forEach { it ->
+                        requestBuilder.addHeader(it.key, it.value)
+                    }
+
+                    chain.proceed(requestBuilder.build())
                 }
-
-                chain.proceed(requestBuilder.build())
             }
 
             return Retrofit.Builder()

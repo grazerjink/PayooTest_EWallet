@@ -6,7 +6,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.WindowManager
 import com.winsonmac.core.base.BaseActivity
-import com.winsonmac.core.popup.MessagePopup
 import com.winsonmac.ewallettest.R
 import com.winsonmac.ewallettest.controllers.phone.PhoneActivity
 import com.winsonmac.ewallettest.databinding.ConfirmationPopupBinding

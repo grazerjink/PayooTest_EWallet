@@ -2,7 +2,6 @@ package com.winsonmac.core.helper
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
 import android.support.design.widget.AppBarLayout
 import android.support.v7.widget.Toolbar
 import android.view.View
@@ -11,8 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import com.winsonmac.core.R
 import com.winsonmac.core.popup.LoadingPopup
-import com.winsonmac.core.popup.MessagePopup
 import com.winsonmac.core.base.BaseActivity
+import com.winsonmac.core.listener.PopupHandler
+import com.winsonmac.core.popup.MessagePopup
 import com.winsonmac.core.util.FontUtil
 
 
@@ -161,7 +161,7 @@ class UIHelper(private val mContext: Context, private val mActivity: BaseActivit
     /**
      * Show popup and able to pass with res id
      */
-    fun showPopup(title: Int, message: Int, buttonTitle: Int, event: ((dialog: MessagePopup) -> Unit)? = null) {
+    fun showPopup(title: Int, message: Int, buttonTitle: Int, event: PopupHandler? = null) {
         showPopup(title, mContext.getString(message), buttonTitle, event)
     }
 
@@ -169,7 +169,7 @@ class UIHelper(private val mContext: Context, private val mActivity: BaseActivit
     /**
      * Show popup with string content
      */
-    fun showPopup(title: Int, message: String, buttonTitle: Int, event: ((dialog: MessagePopup) -> Unit)? = null) {
+    fun showPopup(title: Int, message: String, buttonTitle: Int, event: PopupHandler? = null) {
         try {
             mMessagePopup.enableConfirmMode(false)
                 .setTitle(title)
@@ -193,8 +193,8 @@ class UIHelper(private val mContext: Context, private val mActivity: BaseActivit
         message: Int,
         positiveTitle: Int,
         negativeTitle: Int,
-        positiveEvent: ((dialog: MessagePopup) -> Unit)? = null,
-        negativeEvent: ((dialog: MessagePopup) -> Unit)? = null
+        positiveEvent: PopupHandler? = null,
+        negativeEvent: PopupHandler? = null
     ) {
         showConfirmDialog(
             title,
@@ -214,8 +214,8 @@ class UIHelper(private val mContext: Context, private val mActivity: BaseActivit
         message: String,
         positiveTitle: String,
         negativeTitle: String,
-        positiveCallback: ((dialog: MessagePopup) -> Unit)? = null,
-        negativeCallback: ((dialog: MessagePopup) -> Unit)? = null
+        positiveCallback: PopupHandler? = null,
+        negativeCallback: PopupHandler? = null
     ) {
         try {
             mMessagePopup.enableConfirmMode(true)

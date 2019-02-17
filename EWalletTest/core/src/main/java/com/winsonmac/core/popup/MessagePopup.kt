@@ -7,11 +7,12 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.winsonmac.core.R
+import com.winsonmac.core.listener.PopupHandler
 import com.winsonmac.core.util.FontUtil
 
 
 /* =========================================================================================== */
-/*  Alert message popup                                                              s          */
+/*  Alert message popup                                                                        */
 /* =========================================================================================== */
 
 class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
@@ -65,7 +66,7 @@ class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
         title: CharSequence?,
         message: CharSequence?,
         buttonTitle: CharSequence,
-        callback: ((dialog: MessagePopup) -> Unit)?
+        callback: PopupHandler?
     ) {
         initView(false)
         setCanceledOnTouchOutside(false)
@@ -91,8 +92,8 @@ class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
         message: CharSequence?,
         positiveButtonTitle: CharSequence,
         negativeButtonTitle: CharSequence,
-        positiveCallback: ((dialog: MessagePopup) -> Unit)?,
-        negativeCallback: ((dialog: MessagePopup) -> Unit)?
+        positiveCallback: PopupHandler?,
+        negativeCallback: PopupHandler?
     ) {
         initView(true)
         setCanceledOnTouchOutside(false)
@@ -125,9 +126,9 @@ class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
         private var positiveButtonTitle: CharSequence = "Ok"
         private var alertTitle: CharSequence? = null
         private var alertMessage: CharSequence? = null
-        private var singleButtonListener: ((dialog: MessagePopup) -> Unit)? = null
-        private var negativeButtonListener: ((dialog: MessagePopup) -> Unit)? = null
-        private var positiveButtonListener: ((dialog: MessagePopup) -> Unit)? = null
+        private var singleButtonListener: PopupHandler? = null
+        private var negativeButtonListener: PopupHandler? = null
+        private var positiveButtonListener: PopupHandler? = null
         private var doubleMode = false
 
         fun setTitle(title: CharSequence): Builder {
@@ -160,7 +161,7 @@ class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
             return this
         }
 
-        fun setSingleButtonListener(listener: ((dialog: MessagePopup) -> Unit)?): Builder {
+        fun setSingleButtonListener(listener: PopupHandler?): Builder {
             singleButtonListener = listener
             return this
         }
@@ -175,7 +176,7 @@ class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
             return this
         }
 
-        fun setNegativeButtonListener(listener: ((dialog: MessagePopup) -> Unit)?): Builder {
+        fun setNegativeButtonListener(listener: PopupHandler?): Builder {
             negativeButtonListener = listener
             return this
         }
@@ -190,7 +191,7 @@ class MessagePopup(context: Context) : Dialog(context, R.style.PopupWindow) {
             return this
         }
 
-        fun setPositiveButtonListener(listener: ((dialog: MessagePopup) -> Unit)?): Builder {
+        fun setPositiveButtonListener(listener: PopupHandler?): Builder {
             positiveButtonListener = listener
             return this
         }
